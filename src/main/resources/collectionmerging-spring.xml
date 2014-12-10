@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="parent" abstract="true" class="com.semanticbits.shoaib.configurationapproach.collectionmerging.ParentClass">
+          <property name="subjects">
+              <list>
+                  <value>Biology</value>
+                  <value>Information Technology</value>
+              </list>
+          </property>
+        
+          <property name="information">
+              <map>
+                  <entry key="height"><value>5.11</value></entry>
+                  <entry key="name" value="Shoaib Chikate"/>
+              </map>
+          </property>
+
+    </bean>
+    
+    <bean id="child" parent="parent" class="com.semanticbits.shoaib.configurationapproach.collectionmerging.ChildClass">
+        <property name="subjects">
+            <list merge="true">
+                <value>Physics</value>
+            </list>
+        </property>
+
+        <property name="information">
+            <map merge="true">
+                <entry key="name" value="Sajeed Chikate"/>
+            </map>
+        </property>
+    </bean>
+</beans>

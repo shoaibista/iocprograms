@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="student" class="com.semanticbits.shoaib.configurationapproach.autowiring.constructor.Student" autowire="constructor"
+          init-method="init" />
+    <bean id="addresss" class="com.semanticbits.shoaib.configurationapproach.autowiring.constructor.Address" p:place="Mumbai" />
+    <bean id="addresssasdas" class="com.semanticbits.shoaib.configurationapproach.autowiring.constructor.Address" p:place="Hyderabad" autowire-candidate="false"/>
+    <!--<bean id="hsas" class="com.semanticbits.shoaib.configurationapproach.autowiring.constructor.Address" p:place="Hyderabad" scope="prototype"></bean>-->
+
+
+</beans>

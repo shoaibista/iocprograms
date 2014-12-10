@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="propertiesfiles/connectionprovider.properties">
+        </property>
+    </bean>
+    <bean id="emailService" class="com.semanticbits.shoaib.event.EmailService" >
+        <property name="emailListMap">
+            <map>
+                <entry key="PARENT_EVENT_ALERT" value-ref="parentEmailList"></entry>
+                <entry key="STUDENT_EVENT_ALERT" value-ref="studentEmailList"></entry>
+                <entry key="TEACHER_EVENT_ALERT" value-ref="teacherEmailList"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <util:list id="parentEmailList">
+        <value>shoaib.chikate@india.semanticbits.com</value>
+        <value>shoaibista@gmail.com</value>
+    </util:list>
+
+
+    <util:list id="studentEmailList">
+        <value>snehalata.kulkarni@india.semanticbits.com</value>
+    </util:list>
+
+
+    <util:list id="teacherEmailList">
+        <value>ashok.dongare@india.semanticbits.com</value>
+        <value>dileep.karjala@india.semanticbits.com</value>
+    </util:list>
+
+    <bean id="emailNotifier" class="com.semanticbits.shoaib.event.EmailNotifier">
+        <property name="fromMailAddress" value="${fromMailAddress}"></property>
+        <property name="username" value="${email_username}"></property>
+        <property name="password" value="${email_password}"></property>
+        <property name="emailHandlerMap">
+            <map>
+                <entry key="PARENT_EVENT_ALERT" value-ref="parentEmailHandler"></entry>
+                <entry key="STUDENT_EVENT_ALERT" value-ref="studentEmailHandler"></entry>
+                <entry key="TEACHER_EVENT_ALERT" value-ref="teacherEmailHandler"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>propertiesfiles/error</value>
+                <value>propertiesfiles/email</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="parentEmailHandler" class="com.semanticbits.shoaib.event.ParentEmailHandler"></bean>
+    <bean id="studentEmailHandler" class="com.semanticbits.shoaib.event.StudentEmailHandler"></bean>
+    <bean id="teacherEmailHandler" class="com.semanticbits.shoaib.event.TeacherEmailHandler"></bean>
+
+</beans>

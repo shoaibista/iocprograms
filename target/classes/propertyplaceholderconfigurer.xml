@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--Introduce in Spring 2.5 to make beanfactory aware of properties file-->
+    <!--<context:property-placeholder location="propertiesfiles/connectionprovider.properties"/>-->
+    <!--<context:property-placeholder location="propertiesfiles/hibernate.properties"/>-->
+
+    <util:list id="propertiesFileList">
+        <value>propertiesfiles/connectionprovider.properties</value>
+        <value>propertiesfiles/hibernate.properties</value>
+    </util:list>
+
+
+    <!--Another way to configure the properties file by using PropertyPlaceholderConfigurer-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" ref="propertiesFileList"/>
+        <property name="systemPropertiesMode" value="0"/>
+       <!-- never (0): Never check system properties
+        • fallback (1): Check system properties if not resolvable in the specified properties files. This is the
+        default.
+        • override (2): Check system properties first, before trying the specified properties files. This allows
+        system properties to override any other property source.-->
+    </bean>
+
+    <bean id="connectionProvider" class="${connectionProviderClassName}">
+        <property name="driverClass" value="${driverClass}"/>
+        <property name="password" value="${password}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="showSQL" value="${show_sql}"/>
+    </bean>
+</beans>

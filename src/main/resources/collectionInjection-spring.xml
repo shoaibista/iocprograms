@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="student" class="com.semanticbits.shoaib.configurationapproach.collectioninjections.Student">
+        <property name="subjects">
+            <list>
+                <value>Maths</value>
+                <value>Science</value>
+                <value>Biology</value>
+            </list>
+        </property>
+
+        <property name="hometowns">
+            <set>
+                <value>Mumbai</value>
+                <value>Hyderabad</value>
+                <value>Mumbai</value>
+            </set>
+        </property>
+
+        <property name="infoMap">
+            <map>
+                <entry key="height"><value type="double">5.11</value></entry>
+                <entry key="weight" value="92" value-type="int"></entry>
+            </map>
+        </property>
+
+        <property name="interests">
+            <array>
+                <value>Singing</value>
+                <value>Playing Chess</value>
+            </array>
+        </property>
+        
+        <property name="myProperties">
+            <props>
+                <prop key="dob">25/10/1990</prop>
+                <prop key="marks">84.40 %</prop>
+            </props>
+        </property>
+
+    </bean>
+
+</beans>

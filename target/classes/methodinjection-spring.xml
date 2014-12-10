@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="agent" class="com.semanticbits.shoaib.configurationapproach.methodinjection.Agent" scope="prototype"/>
+
+    <bean id="company" class="com.semanticbits.shoaib.configurationapproach.methodinjection.Company">
+        <!--Here we instruct spring container that look at method getAgent-->
+        <!--and each time return agent object thus making it prototype although it is injected into singleton bean.-->
+        <lookup-method name="getAgent" bean="agent"/>
+    </bean>
+
+</beans>

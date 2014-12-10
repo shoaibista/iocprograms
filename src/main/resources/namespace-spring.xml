@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="scholar" class="com.semanticbits.shoaib.configurationapproach.namespaces.Scholar"
+          c:university2-ref="university2" p:university1-ref="university1"/>
+
+    <bean id="university1" class="com.semanticbits.shoaib.configurationapproach.namespaces.University" p:universityName="Dr. Batu"/>
+    <bean id="university2" class="com.semanticbits.shoaib.configurationapproach.namespaces.University" p:universityName="Mumbai University"/>
+
+</beans>

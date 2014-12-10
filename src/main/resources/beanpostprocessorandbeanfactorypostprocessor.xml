@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-destroy-method="destroy" default-init-method="init">
+    <bean id="engineer" class="com.semanticbits.shoaib.configurationapproach.beanpostprocessorandbeanfactorypostprocessor.Engineer">
+        <property name="name" value="Shoaib"/>
+    </bean>
+    <bean id="subject" class="com.semanticbits.shoaib.configurationapproach.beanpostprocessorandbeanfactorypostprocessor.Subject"/>
+
+
+    <bean class="com.semanticbits.shoaib.configurationapproach.beanpostprocessorandbeanfactorypostprocessor.MyBeanPostProcessor"/>
+    <bean class="com.semanticbits.shoaib.configurationapproach.beanpostprocessorandbeanfactorypostprocessor.MyBeanFactoryPostProcessor"/>
+
+</beans>

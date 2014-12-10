@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--This class contains add method which need to be replaced i.e instead of calling its add method we can call our add method-->
+    <bean id="calculator" class="com.semanticbits.shoaib.configurationapproach.methodreplacer.Calculator" c:_0="10" c:b="20">
+        <!--Here we are replacing the add method with reimplement method present in MyMethodReplacer class-->
+        <!--name="The method we need to replace"-->
+        <!--replacer="the bean id where the replacer method is present"-->
+        <replaced-method name="add" replacer="myMethodReplacer"></replaced-method>
+    </bean>
+
+    <bean id="myMethodReplacer" class="com.semanticbits.shoaib.configurationapproach.methodreplacer.MyMethodReplacer"/>
+
+</beans>
